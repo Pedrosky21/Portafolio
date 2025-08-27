@@ -1,103 +1,267 @@
+import Nav from "@/components/nav";
 import Image from "next/image";
+import LogosMarquee from "@/components/marquee";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Nav />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="flex justify-center w-full h-5/6 pt-10">
+        <div className="flex h-5/6 w-full justify-center">
+          <div className="flex justify-between w-3/4 h-5/6">
+            <div>
+              <div className="flex justify-center bg-modal w-64 me-10 rounded-xl p-2">
+                <div className="">
+                  <Image
+                    src={"/yo4.jpeg"}
+                    alt="Descripción de la imagen"
+                    width={250}
+                    height={250}
+                    className="object-contain rounded-t-xl"
+                  ></Image>
+
+                  <div className="py-2">
+                    <h2 className="p-1 text-xl">Pedro Arreguez</h2>
+                    <div className="text-sm space-y-2">
+                      <div className="flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="size-5 text-green-500"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+
+                        <p> Estudiante de Ing. en Sistemas</p>
+                      </div>
+
+                      <div className="flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="size-5 text-green-500"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+
+                        <p>Córdoba, Argentina</p>
+                      </div>
+
+                      <div className="flex">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="size-5 text-green-500"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+
+                        <p> 23 años </p>
+                      </div>
+
+                      <div className="flex items-center space-x-1 px-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="size-5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                          />
+                        </svg>
+
+                        <p> pedroarreguez21@gmail.com </p>
+                      </div>
+                    
+                    </div>
+
+                    <div className="flex justify-center mt-2">
+                      <button className="w-full rounded-xl border border-purple-800 bg-violet-900 py-1 hover:border-purple-600 hover:bg-pink-500">
+                        Descargar CV
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-around w-64 mt-10">
+                <button className="hover:scale-110 transition-transform duration-300 hover:outline-double outline-purple-500 outline-offset-4 rounded-xl">
+                  <Image
+                    src="github.svg"
+                    alt="Github Icon"
+                    width={50}
+                    height={50}
+                  ></Image>
+                </button>
+                <button className="hover:scale-110 transition-transform duration-300 hover:outline-double outline-purple-500 outline-offset-4 rounded-xl">
+                  <Image
+                    src="instagram.svg"
+                    alt="Instagram Icon"
+                    width={50}
+                    height={50}
+                  ></Image>
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col w-2/3 h-5/6">
+              <div>
+                <h2 className="text-xl text-amber-500">Proyectos destacados</h2>
+                <div className="flex flex-col justify-center space-y-2 flex-1 bg-modal rounded-xl p-4 h-full">
+                  <div className="flex justify-between">
+                    <div className="space-y-1">
+                      <h3 className="text-md text-amber-400">Mangas App</h3>
+                      <div className="flex flex-col justify-between h-40">
+                        <p className="text-sm w-96">
+                          Aplicación web de mangas que permite agregar, editar y
+                          eliminar mangas (CRUD), los cuales se almacenan en una
+                          base de datos (SQLite).
+                        </p>
+                        <div className="flex space-x-4">
+                          <Image
+                            src="/angular.svg"
+                            alt="Angular Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/bootstrap.svg"
+                            alt="Bootstrap Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/nodejs.svg"
+                            alt="NodeJs Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/express.svg"
+                            alt="Express Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <Image
+                        src="/ProyectoManga.png"
+                        alt="Proyecto Manga"
+                        width={400}
+                        height={400}
+                        className="rounded-xl"
+                      ></Image>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center">
+                    <hr className="border-t-1 border-white w-full" />
+                  </div>
+
+                  <div className="flex justify-between">
+                    <div className="space-y-1">
+                      <h3 className="text-md text-amber-400">Space App</h3>
+                      <div className="flex flex-col justify-between h-5/6">
+                        <p className="text-sm w-96">
+                          Aplicación web de notas con autenticación a través de
+                          JWT (inicio de sesión y registro). Conexión a una base
+                          de datos (MongoDB) para almacenar los usuarios y sus
+                          notas.
+                        </p>
+                        <div className="flex space-x-4">
+                          <Image
+                            src="/nextjs.svg"
+                            alt="NextJs Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/react.svg"
+                            alt="React Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/tailwind.svg"
+                            alt="Tailwind Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/nodejs.svg"
+                            alt="NodeJs Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/express.svg"
+                            alt="Express Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                          <Image
+                            src="/mongodb.svg"
+                            alt="MongoDB Icon"
+                            width={40}
+                            height={40}
+                          ></Image>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <Image
+                        src="/ProyectoSpace.png"
+                        alt="Proyecto Space"
+                        width={400}
+                        height={400}
+                        className="rounded-xl"
+                      ></Image>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-5 h-20 outline outline-purple-500 outline-offset-4 rounded-2xl">
+                  <h3 className="flex justify-center my-1">
+                    Competecias técnicas
+                  </h3>
+                  <div className="overflow-hidden">
+                    <LogosMarquee></LogosMarquee>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
