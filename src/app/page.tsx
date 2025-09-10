@@ -1,29 +1,158 @@
+"use client";
+
+import { useState, useRef } from "react";
+import { animate } from "animejs";
+
 import Nav from "@/components/nav";
 import Image from "next/image";
 import LogosMarquee from "@/components/marquee";
+import Technologies from "@/components/technologies";
+import { projects } from "@/data/projects";
 
 export default function Home() {
+  const project1 = projects[2];
+  const project2 = projects[0];
+  const projectsToShow = [project1, project2];
+
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const [icon, setIcon] = useState(
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="size-4"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+      />
+    </svg>
+  );
+
+  const outlineRef = useRef<HTMLAnchorElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  const handleClick = () => {
+    // primeras lineas para no interrumpir animacion o reiniciar con clicks
+    if (isAnimating) return; // si ya hay animación, salir
+    setIsAnimating(true); // animando
+
+    let reversed = false;
+    const circle = circleRef.current;
+    if (!circle) return;
+    const circleAnimation = animate(circle, {
+      autoplay: false,
+      rotate: "1turn",
+      duration: 600,
+      ease: "easeOut",
+      loop: false,
+      onComplete: () => {
+        if (!reversed) {
+          // Para que solo se ejecute al completar una vez y no en reversed
+          reversed = true;
+          circle.style.backgroundColor = "#178236";
+          setIcon(
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m4.5 12.75 6 6 9-13.5"
+              />
+            </svg>
+          );
+        }
+      },
+    });
+
+    const outline = outlineRef.current;
+    if (!outline) return;
+    const outlineAnimation = animate(outline, {
+      autoplay: false,
+      width: "42px",
+      duration: 600,
+      onComplete: (self) => {
+        setTimeout(() => {
+          setIcon(
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+              />
+            </svg>
+          );
+          self.reverse();
+          circleAnimation.reverse();
+          circle.style.backgroundColor = "#2b7fff";
+        }, 1000);
+      },
+    });
+
+    let reversedText = false;
+    const text = textRef.current;
+    if (!text) return;
+    animate(text, {
+      translateY: ["0%", "50%"],
+      duration: 300,
+      ease: "linear",
+      loop: false,
+      onComplete: (self) => {
+        if (!reversedText) {
+          reversedText = true;
+          const el = document.getElementById("text");
+          if (el) el.style.display = "none";
+          outlineAnimation.play();
+          circleAnimation.play();
+          setTimeout(() => {
+            self.reverse();
+            if (el) el.style.display = "block";
+            setTimeout(() => setIsAnimating(false), 100);
+          }, 2300);
+        }
+      },
+    });
+  };
+
   return (
     <>
-      <Nav />
+      <div className="bg-gradient-violet min-h-screen w-full">
+        <Nav />
 
-      <div className="flex justify-center w-full h-5/6 pt-10">
-        <div className="flex h-5/6 w-full justify-center">
-          <div className="flex justify-between w-3/4 h-5/6">
-            <div>
-              <div className="flex justify-center bg-modal w-64 me-10 rounded-xl p-2">
+        <div className="flex w-full justify-center pt-10">
+          <div className="grid w-5/6 grid-cols-1 space-y-5 sm:grid-cols-3 md:w-2/3 md:space-y-0">
+            <div className="min-h-full">
+              <div className="bg-modal flex justify-center rounded-xl py-3 md:w-64 md:p-1">
                 <div className="">
                   <Image
                     src={"/yo4.jpeg"}
                     alt="Descripción de la imagen"
                     width={250}
                     height={250}
-                    className="object-contain rounded-t-xl"
+                    className="rounded-t-xl object-contain"
                   ></Image>
 
-                  <div className="py-2">
+                  <div className="">
                     <h2 className="p-1 text-xl">Pedro Arreguez</h2>
-                    <div className="text-sm space-y-2">
+                    <div className="space-y-2 text-sm">
                       <div className="flex">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +172,7 @@ export default function Home() {
                         <p> Estudiante de Ing. en Sistemas</p>
                       </div>
 
-                      <div className="flex">
+                      <div className="flex items-center space-x-1">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -59,7 +188,7 @@ export default function Home() {
                           />
                         </svg>
 
-                        <p>Córdoba, Argentina</p>
+                        <p className="p-0">Córdoba, Argentina</p>
                       </div>
 
                       <div className="flex">
@@ -99,164 +228,115 @@ export default function Home() {
 
                         <p> pedroarreguez21@gmail.com </p>
                       </div>
-                    
                     </div>
 
-                    <div className="flex justify-center mt-2">
-                      <button className="w-full rounded-xl border border-purple-800 bg-violet-900 py-1 hover:border-purple-600 hover:bg-pink-500">
-                        Descargar CV
-                      </button>
+                    <div className="mt-2 flex justify-center">
+                      <a
+                        href="CV.pdf"
+                        onClick={handleClick}
+                        ref={outlineRef}
+                        className="flex w-full items-center rounded-full border border-purple-800 py-1 hover:border-purple-600 hover:bg-fuchsia-800"
+                        download
+                      >
+                        <div
+                          ref={circleRef}
+                          className="ms-1 me-9 rounded-full bg-blue-700 p-2"
+                        >
+                          {icon}
+                        </div>
+                        <p
+                          id="text"
+                          ref={textRef}
+                        >
+                          Descargar CV
+                        </p>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="flex justify-around w-64 mt-10">
-                <button className="hover:scale-110 transition-transform duration-300 hover:outline-double outline-purple-500 outline-offset-4 rounded-xl">
+            <div className="col-span-2">
+              <div className="bg-modal flex flex-col rounded-xl p-2 md:min-h-full md:w-full">
+                <h2 className="text-center text-xl text-amber-500 md:text-start">
+                  Proyectos destacados
+                </h2>
+                <div className="grid flex-1 grid-rows-2 space-y-2 divide-y-1 rounded-xl bg-slate-900 px-4 md:w-full">
+                  {projectsToShow.map((proj, index) => (
+                    <div
+                      key={index}
+                      className="group relative w-full items-center py-2 transition-all hover:translate-x-2 md:flex"
+                    >
+                      <div className="space-y-1 md:w-full">
+                        <h3 className="text-md text-amber-400">{proj.title}</h3>
+                        <div className="me-5 flex flex-col justify-between md:h-32">
+                          <p className="text-sm">{proj.description}</p>
+                          <div className="pe-6 md:pe-0">
+                            <Technologies
+                              items={proj.technologies}
+                            ></Technologies>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="w-full">
+                        <Image
+                          src={proj.image}
+                          alt="Project Image"
+                          width={300}
+                          height={100}
+                          className="rounded-xl group-hover:opacity-75"
+                        ></Image>
+                        <button className="hidden absolute right-27 bottom-10 rounded-xl border-2 border-black bg-purple-600 px-3 py-1 text-xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                          Mas info...
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="me-0 mt-0 w-full rounded-xl bg-slate-800 p-2 outline outline-offset-4 outline-purple-500 md:me-10 md:mt-8 md:w-64 md:bg-transparent md:p-0 md:outline-0">
+              <h2 className="mb-3 block text-center text-xl text-amber-500 md:hidden">
+                Mis redes
+              </h2>
+              <div className="flex justify-around">
+                <a
+                  href="https://github.com/Pedrosky21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl outline-offset-4 outline-purple-500 transition-transform duration-300 hover:scale-110 hover:outline-double"
+                >
                   <Image
                     src="github.svg"
                     alt="Github Icon"
                     width={50}
                     height={50}
                   ></Image>
-                </button>
-                <button className="hover:scale-110 transition-transform duration-300 hover:outline-double outline-purple-500 outline-offset-4 rounded-xl">
+                </a>
+                <a
+                  href="https://www.instagram.com/pedro.sky21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl outline-offset-4 outline-purple-500 transition-transform duration-300 hover:scale-110 hover:outline-double"
+                >
                   <Image
                     src="instagram.svg"
                     alt="Instagram Icon"
                     width={50}
                     height={50}
                   ></Image>
-                </button>
+                </a>
               </div>
             </div>
 
-            <div className="flex flex-col w-2/3 h-5/6">
-              <div>
-                <h2 className="text-xl text-amber-500">Proyectos destacados</h2>
-                <div className="flex flex-col justify-center space-y-2 flex-1 bg-modal rounded-xl p-4 h-full">
-                  <div className="flex justify-between">
-                    <div className="space-y-1">
-                      <h3 className="text-md text-amber-400">Mangas App</h3>
-                      <div className="flex flex-col justify-between h-40">
-                        <p className="text-sm w-96">
-                          Aplicación web de mangas que permite agregar, editar y
-                          eliminar mangas (CRUD), los cuales se almacenan en una
-                          base de datos (SQLite).
-                        </p>
-                        <div className="flex space-x-4">
-                          <Image
-                            src="/angular.svg"
-                            alt="Angular Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/bootstrap.svg"
-                            alt="Bootstrap Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/nodejs.svg"
-                            alt="NodeJs Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/express.svg"
-                            alt="Express Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <Image
-                        src="/ProyectoManga.png"
-                        alt="Proyecto Manga"
-                        width={400}
-                        height={400}
-                        className="rounded-xl"
-                      ></Image>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center">
-                    <hr className="border-t-1 border-white w-full" />
-                  </div>
-
-                  <div className="flex justify-between">
-                    <div className="space-y-1">
-                      <h3 className="text-md text-amber-400">Space App</h3>
-                      <div className="flex flex-col justify-between h-5/6">
-                        <p className="text-sm w-96">
-                          Aplicación web de notas con autenticación a través de
-                          JWT (inicio de sesión y registro). Conexión a una base
-                          de datos (MongoDB) para almacenar los usuarios y sus
-                          notas.
-                        </p>
-                        <div className="flex space-x-4">
-                          <Image
-                            src="/nextjs.svg"
-                            alt="NextJs Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/react.svg"
-                            alt="React Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/tailwind.svg"
-                            alt="Tailwind Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/nodejs.svg"
-                            alt="NodeJs Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/express.svg"
-                            alt="Express Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                          <Image
-                            src="/mongodb.svg"
-                            alt="MongoDB Icon"
-                            width={40}
-                            height={40}
-                          ></Image>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <Image
-                        src="/ProyectoSpace.png"
-                        alt="Proyecto Space"
-                        width={400}
-                        height={400}
-                        className="rounded-xl"
-                      ></Image>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-5 h-20 outline outline-purple-500 outline-offset-4 rounded-2xl">
-                  <h3 className="flex justify-center my-1">
-                    Competecias técnicas
-                  </h3>
-                  <div className="overflow-hidden">
-                    <LogosMarquee></LogosMarquee>
-                  </div>
-                </div>
+            <div className="bg-modal col-span-2 mt-5 mb-10 rounded-2xl py-2 outline outline-offset-4 outline-purple-500 md:mb-0">
+              <div className="overflow-hidden">
+                <h2 className="mb-3 block text-center text-xl text-amber-500 md:hidden">
+                  Tecnologías
+                </h2>
+                <LogosMarquee></LogosMarquee>
               </div>
             </div>
           </div>

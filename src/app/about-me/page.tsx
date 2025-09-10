@@ -1,12 +1,30 @@
 import Nav from "@/components/nav";
+import MyTechnologies from "./components/technologies";
+import ContactMe from "./components/contact-me";
+import MyCard from "./components/my-card";
 
 export default function AboutMe() {
-    return(
-        <>
+  return (
+    <>
+      <div className="min-h-screen w-full bg-gradient-violet">
         <Nav></Nav>
-        <div>
-            <h2>AboutMe funcionando</h2>
+        <div className="justify-center md:flex md:h-7/8 md:w-full">
+          <div className="md:flex md:w-5/6">
+            <div className="flex-col justify-between p-4 md:w-2/5 md:flex">
+              <MyCard></MyCard>
+              <div className="mt-5">
+                <ContactMe></ContactMe>
+              </div>
+            </div>
+
+            <div className="p-4 lg:w-3/4">
+              <div className="md:h-full">
+                <MyTechnologies></MyTechnologies>
+              </div>
+            </div>
+          </div>
         </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }

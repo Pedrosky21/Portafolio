@@ -1,0 +1,96 @@
+[
+  {
+    "title": "Python",
+    "description": [
+      "Dominio del lenguaje y su sintaxis",
+      "Manejo de estructuras de datos como listas, diccionarios y sets",
+      "Programación orientada a objetos (POO) y funciones de orden superior",
+      "Lectura/escritura de archivos",
+      "Uso de bibliotecas como pandas, numpy y os"
+    ]
+  },
+  {
+    "title": "Javascript",
+    "description": [
+      "Dominio del lenguaje y su sintaxis moderna (ES6+)",
+      "Manejo de estructuras de control, funciones de orden superior y closures",
+      "Manipulación del DOM y gestión de eventos en el navegador",
+      "Uso de asincronía con async/await y promesas",
+      "Consumo de APIs REST mediante fetch y manejo de respuestas",
+      "Modularización del código y uso de módulos (import/export)",
+      "Aplicación de buenas prácticas de codificación y patrones comunes",
+      "Familiaridad con herramientas de desarrollo y depuración en el navegador"
+    ]
+  },
+  {
+    "title": "Next.js",
+    "description": [
+      "Desarrollo de aplicaciones web con arquitectura basada en rutas de archivos (App Router y Pages Router)",
+      "Renderizado híbrido: Server-Side Rendering (SSR), Static Site Generation (SSG) y Client-Side Rendering (CSR)",
+      "Uso de componentes asincrónicos y carga dinámica (dynamic import)",
+      "Implementación de APIs mediante funciones en la carpeta /api",
+      "Optimización automática del rendimiento y manejo de imágenes con next/image",
+      "Estilización con Tailwind CSS, CSS Modules o Styled Components"
+    ]
+  },
+  {
+    "title": "Angular",
+    "description": [
+      "Desarrollo de aplicaciones SPA con arquitectura basada en componentes",
+      "Uso de TypeScript para programación tipada y estructurada",
+      "Gestión de rutas con Angular Router",
+      "Consumo de servicios HTTP y manejo de observables con RxJS",
+      "Creación de servicios e inyección de dependencias (DI)",
+      "Implementación de formularios reactivos y validaciones",
+      "Uso de pipes personalizados y directivas estructurales",
+      "Integración con bibliotecas de diseño como Angular Material o Bootstrap"
+    ]
+  },
+  {
+    "title": "Github",
+    "description": [
+      "Manejo de control de versiones con Git desde la línea de comandos y GUI",
+      "Uso de GitHub para hospedaje de repositorios y colaboración en proyectos",
+      "Flujos de trabajo con ramas (`feature`, `main`, `develop`, `hotfix`)",
+      "Creación y revisión de pull requests (PR)",
+      "Gestión de llaves SSH y autenticación segura"
+    ]
+  },
+  {
+    "title": "Node.js",
+    "description": [
+      "Desarrollo del lado del servidor utilizando JavaScript en entorno Node.js",
+      "Creación de APIs RESTful con Express.js",
+      "Manejo de rutas, middlewares y controladores",
+      "Conexión con bases de datos (MySQL, MongoDB) desde el backend",
+      "Uso de herramientas como Nodemon, dotenv y Postman",
+      "Gestión de dependencias y scripts mediante npm",
+      "Programación asincrónica con Promesas y async/await",
+      "Estructuración de proyectos backend de forma escalable y modular"
+    ]
+  },
+  {
+    "title": "MySql",
+    "description": [
+      "Diseño y modelado de bases de datos relacionales",
+      "Escritura de consultas SQL para selección, inserción, actualización y eliminación de datos",
+      "Uso de joins, subconsultas y funciones agregadas",
+      "Creación de procedimientos almacenados y triggers",
+      "Normalización de tablas y optimización de consultas",
+      "Gestión de usuarios, roles y privilegios",
+      "Conexión de bases de datos con aplicaciones backend (por ejemplo, Node.js y Sequelize)",
+      "Uso de herramientas como MySQL Workbench"
+    ]
+  },
+  {
+    "title": "MongoDB",
+    "description": [
+      "Modelado de datos con esquemas flexibles en documentos BSON",
+      "Operaciones CRUD usando Mongo Shell y bibliotecas como Mongoose",
+      "Diseño de colecciones y subdocumentos embebidos",
+      "Consultas con operadores avanzados de filtrado y proyección",
+      "Indexación de campos y optimización de rendimiento",
+      "Conexión con aplicaciones Node.js mediante Mongoose"
+    ]
+  }
+]
