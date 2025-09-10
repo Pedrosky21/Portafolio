@@ -3,7 +3,7 @@ export const projects = [
     id: 1,
     title: "Padel App",
     description: "App web de padel que desarrollé en equipo con metodologías ágiles. Gestión de usuarios, autenticación, transacciones en base de datos.",
-    image: "/ProyectoSpace.png",
+    image: "/ProyectoPadel2.png",
     technologies: ["angular", "tailwind", "nodejs", "express", "mysql"],
     repo: "https://github.com/Pedrosky21/PadelApp",
     category: "FullStack",

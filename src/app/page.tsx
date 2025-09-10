@@ -10,8 +10,8 @@ import Technologies from "@/components/technologies";
 import { projects } from "@/data/projects";
 
 export default function Home() {
-  const project1 = projects[2];
-  const project2 = projects[0];
+  const project1 = projects[0];
+  const project2 = projects[2];
   const projectsToShow = [project1, project2];
 
   const [isAnimating, setIsAnimating] = useState(false);
