@@ -13,6 +13,7 @@ export default function Projects() {
     "FullStack"
   );
   const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     btnRefs.current.forEach((btn, index) => {
@@ -23,12 +24,22 @@ export default function Projects() {
         (selected === "Data Analysis" && index === 1);
 
       animate(btn, {
-        backgroundColor: isActive ? "#f59e0b" : "#0f172a", // azul activo / gris inactivo
-        color: isActive ? "#0d0d0d" : "#fff",
+        backgroundColor: isActive ? "#f43f5e" : "#0f172a", // ambar activo / gris inactivo
+        color: isActive ? "#fff" : "#fff",
         scale: isActive ? 1 : 1, // efecto rebote
         duration: 200,
         easing: "easeOutElastic(1, .7)",
       });
+    });
+
+    const scrollElements = scrollRefs.current;
+    if (!scrollElements) return;
+    animate(scrollElements, {
+      translateY: [20, -10],
+      ease: "inOut",
+      loop: true,
+      autoplay: true,
+      alternate: true,
     });
   }, [selected]);
 
@@ -104,7 +115,9 @@ export default function Projects() {
               >
                 <div className="flex w-5/6 flex-col rounded-2xl border border-white/20 bg-purple-500/10 p-4 text-center shadow-lg shadow-purple-700/50 backdrop-blur-md md:w-3/6">
                   <div className="pointer-events-none absolute top-0 left-0 h-1/3 w-full rounded-t-2xl bg-gradient-to-b from-purple-700/10 to-transparent"></div>
-                  <h3 className="text-xl font-bold text-amber-500">{proj.title}</h3>
+                  <h3 className="text-xl font-bold text-rose-500">
+                    {proj.title}
+                  </h3>
                   <div className="mt-2 space-x-5 md:flex">
                     <div className="flex w-full flex-col items-center justify-between md:h-64">
                       <div>
@@ -117,8 +130,8 @@ export default function Projects() {
                         ></Image>
                       </div>
                       <div className="mt-2 flex justify-center md:mt-0">
-                        <div className="hover:shadow-glow-light-soft w-full rounded-full border-2 border-black bg-blue-800 pe-8 lg:px-5 lg:py-1">
-                          <div className="scale-90 md:scale-75 lg:scale-100">
+                        <div className="hover:shadow-glow-light-soft w-64 md:w-full rounded-full border-2 border-black bg-blue-800 pe-8 lg:px-5 lg:py-1">
+                          <div className="pl-5 scale-90 md:pl-0 md:scale-75 lg:scale-100">
                             <Technologies
                               items={proj.technologies}
                             ></Technologies>
@@ -149,25 +162,36 @@ export default function Projects() {
 
                 <div className="mt-10 hidden md:block">
                   {index < projects.length - 1 && (
-                    <button
-                      onClick={scrollAbajo}
-                      className="rounded-full border border-blue-500 bg-blue-700/20 p-2"
+                    <div
+                      ref={(el) => {
+                        scrollRefs.current[index] = el; // asigna el ref
+                      }}
+                      className="flex flex-col items-center"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="size-6"
+                      <button
+                        onClick={scrollAbajo}
+                        className="flex w-10 items-center rounded-full border border-blue-500 bg-blue-700/20 p-2"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-                        />
-                      </svg>
-                    </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="size-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+                          />
+                        </svg>
+                      </button>
+
+                      <p className="mt-3 text-center opacity-60">
+                        Scrollea para el sig.
+                      </p>
+                    </div>
                   )}
                 </div>
               </section>

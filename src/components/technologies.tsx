@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { technologyIcons } from "@/data/technologies-icons";
 
 type ListProps = {
   items: string[];
@@ -7,17 +7,18 @@ type ListProps = {
 export default function Technologies({ items }: ListProps) {
   return (
     <>
-      <div className="flex space-x-2 my-2 md:my-0 md:space-x-4">
-        {items.map((item, index) => (
-          <Image
-            key={index}
-            src={`${item}.svg`}
-            alt={`${item} icon`}
-            width={40}
-            height={40}
-            className="hover:scale-110 transition-transform duration-200 ease-out w-1/5 h-1/5 md:w-10 md:h-10"
-          ></Image>
-        ))}
+      <div className="my-2 flex align-middle space-x-2 md:my-0 md:space-x-4">
+        {items.map(
+          (tech, index) =>
+            technologyIcons[tech] && (
+              <div
+                key={index}
+                className="flex items-center text-black h-1/5 w-1/5 md:h-10 md:w-10"
+              >
+                {technologyIcons[tech]}
+              </div>
+            )
+        )}
       </div>
     </>
   );

@@ -1,9 +1,9 @@
 "use client";
-import Image from "next/image";
 import dataTechnologies from "@/data/technologies.json" assert { type: "json" };
 import abilities from "@/app/about-me/data/abilities.json" assert { type: "json" };
 import { useState, useRef, useEffect } from "react";
 import { animate } from "animejs";
+import { technologyIcons } from "@/data/technologies-icons";
 
 export default function MyTechnologies() {
   const [showedTechnology, setShowedTechnology] = useState<{
@@ -47,13 +47,13 @@ export default function MyTechnologies() {
       case "javascript":
         color = "text-yellow-300";
         break;
-      case "next.js":
+      case "nextjs":
         color = "text-white";
         break;
       case "angular":
         color = "text-red-600";
         break;
-      case "node.js":
+      case "nodejs":
         color = "text-green-500";
         break;
       case "github":
@@ -85,8 +85,8 @@ export default function MyTechnologies() {
         (selected === "opcion2" && index === 1);
 
       animate(btn, {
-        backgroundColor: isActive ? "#f59e0b" : "#0f172a", // azul activo / gris inactivo
-        color: isActive ? "#0d0d0d" : "#fff",
+        backgroundColor: isActive ? "#f43f5e" : "#0f172a", // azul activo / gris inactivo
+        color: isActive ? "#fff" : "#fff",
         boxShadow: isActive
           ? [
               "0px 0px 0px rgba(0,0,0,0)", // estado inicial
@@ -102,7 +102,7 @@ export default function MyTechnologies() {
   return (
     <>
       <div className="shadow-glow-light h-full w-full rounded-xl bg-slate-800 p-4 shadow-purple-900 transition-all duration-300 ease-in-out">
-        <h2 className="md:hidden text-xl text-center mb-2 text-amber-500">Habilidades</h2>
+        <h2 className="md:hidden text-xl text-center mb-2 text-rose-500">Habilidades</h2>
         <div className="flex items-center justify-end space-x-2 md:ps-3 text-xl">
           <p className="hidden pt-1 md:flex">Habilidades:</p>
           <div className="flex overflow-hidden rounded-t-xl bg-slate-900 font-semibold">
@@ -133,25 +133,22 @@ export default function MyTechnologies() {
             {technologies.map((tech) => (
               <button
                 key={tech}
-                className={`flex flex-col rounded-xl p-2 outline-1 outline-black hover:scale-125 hover:outline-violet-900 ${
+                className={`flex flex-col rounded-xl p-2 text-black outline-1 outline-black hover:scale-125 hover:outline-violet-900 ${
                   showedTechnology.title.toLowerCase() === tech ||
                   (tech === "nextjs" &&
                     showedTechnology.title.toLowerCase() === "next.js") ||
                   (tech === "nodejs" &&
                     showedTechnology.title.toLowerCase() === "node.js")
-                    ? "outline-violet-900"
+                    ? `outline-violet-900 ${colorTechnology(tech)}`
                     : ""
                 } `}
                 onClick={() => {
                   showTechnology(tech);
                 }}
               >
-                <Image
-                  src={`./${tech}.svg`}
-                  alt={`${tech}-logo`}
-                  width={40}
-                  height={40}
-                ></Image>
+                <div className="h-8 w-8">
+                  {technologyIcons[tech]}
+                </div>
               </button>
             ))}
           </div>
@@ -195,7 +192,7 @@ export default function MyTechnologies() {
               </div>
             ) : (
               <div>
-                <ul className="divide-y-2 divide-amber-500">
+                <ul className="divide-y-2 divide-rose-500">
                   {abilities.map(
                     (
                       ab: { title: string; description: string },
