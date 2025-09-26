@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function MyCard() {
   return (
     <>
-      <div className="bg-modal shadow-glow-light overflow-hidden rounded-xl p-1 shadow-purple-900">
+      <div className="bg-darkest-violet shadow-glow-light overflow-hidden rounded-xl p-1 shadow-purple-900">
         <div className="md:flex">
           <div className="flex md:block items-center">
             <Image
@@ -23,7 +23,7 @@ export default function MyCard() {
           <div className="ps-1 md:mx-2 mt-2">
             <p className="hidden text-2xl md:block">
               Hola! Soy{" "}
-              <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-purple-900">
+              <span className="ml-1 relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-rose-500">
                 <span className="relative text-white">Pedro</span>
               </span>
             </p>

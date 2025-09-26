@@ -7,7 +7,7 @@ export default function ContactMe() {
   return (
     <>
       <div className={`rounded-xl p-4 lg:mb-0 shadow-glow-light shadow-purple-900
-        ${showMail ? "bg-modal" : "bg-blue-900 "}`}>
+        ${showMail ? "bg-slate-950" : "bg-rose-700"}`}>
         <button className="w-full cursor-pointer" onClick={() => setShowMail(!showMail)}>
           <h2 className="text-lg">Contactame</h2>
         </button>

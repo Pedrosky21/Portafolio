@@ -19,8 +19,8 @@ export default function MyCard() {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    let rotateX = 0
-    let rotateY = 0
+    let rotateX = 0;
+    let rotateY = 0;
     if (y < centerY + 35) {
       rotateY = ((x - centerX) / centerX) * 15; // rango de -15 a 15 grados
       rotateX = -((y - centerY) / centerY) * 15; // negativo para que siga la dirección natural
@@ -166,19 +166,21 @@ export default function MyCard() {
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="bg-modal shadow-glow-light-soft shadow-purple-900 hover:shadow-violet-big flex justify-center rounded-xl py-3 outline-1 outline-black md:w-64 md:p-1"
+          className="bg-darkest-violet shadow-glow-light-soft hover:shadow-violet-big flex justify-center rounded-xl py-3 shadow-purple-900 outline-1 outline-black md:w-64 md:p-1"
         >
           <div className="">
-            <Image
-              src={"/yo4.jpeg"}
-              alt="Descripción de la imagen"
-              width={250}
-              height={250}
-              className="rounded-t-xl object-contain"
-            ></Image>
+            <div>
+              <Image
+                src={"/yo7.png"}
+                alt="Descripción de la imagen"
+                width={250}
+                height={250}
+                className="rounded-t-xl object-contain"
+              ></Image>
+            </div>
 
             <div className="">
-              <h2 className="p-1 text-xl">Pedro Arreguez</h2>
+              <h2 className="p-1 text-xl text-rose-500">Pedro Arreguez</h2>
               <div className="space-y-2 text-sm">
                 <div className="flex">
                   <svg
@@ -187,7 +189,7 @@ export default function MyCard() {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="size-5 text-green-500"
+                    className="text-light-violet size-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -206,7 +208,7 @@ export default function MyCard() {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="size-5 text-green-500"
+                    className="text-light-violet size-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -225,7 +227,7 @@ export default function MyCard() {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="size-5 text-green-500"
+                    className="text-light-violet size-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -259,7 +261,7 @@ export default function MyCard() {
 
               <div className="mt-2 flex justify-center">
                 <a
-                  href="CV.pdf"
+                  href="CV Pedro Arreguez.pdf"
                   onClick={handleClick}
                   ref={outlineRef}
                   className="flex w-full items-center rounded-full border border-purple-800 py-1 hover:border-purple-600 hover:bg-purple-950"
@@ -267,7 +269,7 @@ export default function MyCard() {
                 >
                   <div
                     ref={circleRef}
-                    className="ms-1 me-9 rounded-full bg-blue-700 p-2"
+                    className="bg-light-violet ms-1 me-9 rounded-full p-2"
                   >
                     {icon}
                   </div>

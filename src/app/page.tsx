@@ -18,24 +18,26 @@ export default function Home() {
         <Nav />
 
         <div className="flex w-full justify-center pt-10">
-          <div className="grid w-5/6 grid-cols-1 space-y-5 sm:grid-cols-3 md:w-2/3 md:space-y-0">
-            <div className="min-h-full">
+          <div className="lg:grid w-5/6 grid-cols-1 space-y-5 lg:grid-cols-3 lg:w-2/3 md:space-y-0">
+            <div className="items-center w-70 md:w-auto lg:min-h-full">
               <MyCard></MyCard>
             </div>
 
-            <div className="col-span-2">
-              <div className="bg-modal flex flex-col rounded-xl p-2 md:min-h-full md:w-full">
-                <h2 className="text-center text-xl text-rose-500 md:text-start">
+            <div className="py-2 lg:py-0 col-span-2">
+              <div className="bg-darkest-violet shadow-glow-light-soft flex flex-col rounded-xl shadow-purple-900 md:min-h-full md:w-full">
+                <h2 className="text-rose-500 text-center text-2xl md:text-start py-1 px-2">
                   Proyectos destacados
                 </h2>
-                <div className="grid flex-1 grid-rows-2 space-y-2 divide-y-1 rounded-xl bg-slate-900 px-4 md:w-full">
+                <div className="grid flex-1 grid-rows-2 space-y-2 divide-y-1 rounded-b-xl bg-slate-950 outline-1 outline-light-violet px-4 md:w-full">
                   {projectsToShow.map((proj, index) => (
                     <div
                       key={index}
                       className="group relative w-full items-center py-2 transition-all hover:translate-x-2 md:flex"
                     >
                       <div className="space-y-1 md:w-full">
-                        <h3 className="text-md text-rose-400">{proj.title}</h3>
+                        <h3 className="text-xl text-light-violet">
+                          {proj.title}
+                        </h3>
                         <div className="me-5 flex flex-col justify-between md:h-32">
                           <p className="text-sm">{proj.description}</p>
                           <div className="pe-6 md:pe-0">
@@ -63,8 +65,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="me-0 mt-0 w-full rounded-xl bg-slate-800 p-2 outline outline-offset-4 outline-purple-500 md:me-10 md:mt-8 md:w-64 md:bg-transparent md:p-0 md:outline-0">
-              <h2 className="mb-3 block text-center text-xl text-amber-500 md:hidden">
+            <div className="bg-darkest-violet shadow-glow-light-soft me-0 mt-0 w-full rounded-xl p-2 shadow-purple-900 md:me-10 md:mt-8 md:w-64 md:bg-transparent md:p-0 md:shadow-none">
+              <h2 className="text-light-violet mb-3 block text-center text-xl md:hidden">
                 Mis redes
               </h2>
               <div className="flex justify-around">
@@ -80,7 +82,7 @@ export default function Home() {
                     fill="currentColor"
                     strokeWidth="0"
                     stroke="currentColor"
-                    className="size-12 fill-gray-600 hover:fill-gray-400 transition-colors duration-300"
+                    className="size-12 fill-gray-600 transition-colors duration-300 hover:fill-gray-400"
                   >
                     <title>Github</title>
                     <path
@@ -102,7 +104,7 @@ export default function Home() {
                     fill="currentColor"
                     strokeWidth="0"
                     stroke="currentColor"
-                    className="size-12 fill-pink-600 hover:fill-pink-500 transition-colors duration-300"
+                    className="size-12 fill-pink-600 transition-colors duration-300 hover:fill-pink-500"
                   >
                     <title>Instagram</title>
                     <path
@@ -115,9 +117,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-modal col-span-2 mt-5 mb-10 rounded-2xl py-2 outline outline-offset-4 outline-purple-500 md:mb-0">
-              <div className="overflow-hidden">
-                <h2 className="mb-3 block text-center text-xl text-amber-500 md:hidden">
+            <div className="bg-slate-950 col-span-2 mt-5 mb-10 rounded-2xl py-2 outline outline-offset-4 outline-purple-500 md:mb-0">
+              <div className="h-full overflow-hidden">
+                <h2 className="mb-3 block text-center text-xl text-light-violet md:hidden">
                   Tecnologías
                 </h2>
                 <LogosMarquee></LogosMarquee>

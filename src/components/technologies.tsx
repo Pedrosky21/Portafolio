@@ -13,7 +13,7 @@ export default function Technologies({ items }: ListProps) {
             technologyIcons[tech] && (
               <div
                 key={index}
-                className="flex items-center text-black h-1/5 w-1/5 md:h-10 md:w-10"
+                className="flex items-center text-light-violet h-1/5 w-1/5 md:h-10 md:w-10"
               >
                 {technologyIcons[tech]}
               </div>

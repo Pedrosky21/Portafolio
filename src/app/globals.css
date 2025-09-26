@@ -14,6 +14,9 @@
   --color-modal: #1f2937;
   --color-light-blue: #31c6a4;
   --color-title: #3C787E;
+  --color-light-violet: #880CCB;
+  --color-darker-violet: #1D0230;
+  --color-darkest-violet: #180224;
 
   --shadow-glow-light: 0 0 10px 1px var(--color-light-blue);
   --shadow-glow-light-soft: 0 0 5px 5px var(--color-light-blue);

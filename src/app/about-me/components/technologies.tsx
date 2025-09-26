@@ -38,6 +38,7 @@ export default function MyTechnologies() {
   };
 
   const colorTechnology = (tech: string) => {
+    console.log("tech", tech);
     let className = "text-xl ";
     let color;
     switch (tech) {
@@ -47,13 +48,13 @@ export default function MyTechnologies() {
       case "javascript":
         color = "text-yellow-300";
         break;
-      case "nextjs":
+      case "next.js":
         color = "text-white";
         break;
       case "angular":
         color = "text-red-600";
         break;
-      case "nodejs":
+      case "node.js":
         color = "text-green-500";
         break;
       case "github":
@@ -85,7 +86,7 @@ export default function MyTechnologies() {
         (selected === "opcion2" && index === 1);
 
       animate(btn, {
-        backgroundColor: isActive ? "#f43f5e" : "#0f172a", // azul activo / gris inactivo
+        backgroundColor: isActive ? "#FF2056" : "#020618", // azul activo / gris inactivo
         color: isActive ? "#fff" : "#fff",
         boxShadow: isActive
           ? [
@@ -101,11 +102,13 @@ export default function MyTechnologies() {
 
   return (
     <>
-      <div className="shadow-glow-light h-full w-full rounded-xl bg-slate-800 p-4 shadow-purple-900 transition-all duration-300 ease-in-out">
-        <h2 className="md:hidden text-xl text-center mb-2 text-rose-500">Habilidades</h2>
-        <div className="flex items-center justify-end space-x-2 md:ps-3 text-xl">
+      <div className="shadow-glow-light bg-darkest-violet h-full w-full rounded-xl p-4 shadow-purple-900 transition-all duration-300 ease-in-out">
+        <h2 className="mb-2 text-center text-xl text-rose-500 md:hidden">
+          Habilidades
+        </h2>
+        <div className="flex items-center justify-end space-x-2 text-xl md:ps-3">
           <p className="hidden pt-1 md:flex">Habilidades:</p>
-          <div className="flex overflow-hidden rounded-t-xl bg-slate-900 font-semibold">
+          <div className="flex overflow-hidden rounded-t-xl bg-slate-950 font-semibold">
             <button
               ref={(el) => {
                 btnRefs.current[0] = el;
@@ -146,13 +149,23 @@ export default function MyTechnologies() {
                   showTechnology(tech);
                 }}
               >
-                <div className="h-8 w-8">
+                <div
+                  className={`h-8 w-8 ${
+                    tech === showedTechnology.title.toLowerCase() ||
+                    (tech === "nextjs" &&
+                      showedTechnology.title.toLowerCase() === "next.js") ||
+                    (tech === "nodejs" &&
+                      showedTechnology.title.toLowerCase() === "node.js")
+                      ? colorTechnology(tech)
+                      : "text-rose-500"
+                  } ${console.log(showedTechnology.title)}`}
+                >
                   {technologyIcons[tech]}
                 </div>
               </button>
             ))}
           </div>
-          <div className="w-full rounded-tl-xl rounded-b-xl bg-slate-900 p-5 pt-2">
+          <div className="w-full rounded-tl-xl rounded-b-xl bg-slate-950 p-5 pt-2">
             {selected == "opcion1" ? (
               <div>
                 <h2
