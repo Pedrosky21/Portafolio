@@ -18,7 +18,7 @@ export default function Home() {
         <Nav />
         <div className="flex w-full justify-center pt-10">
           <div className="w-5/6 grid-cols-1 space-y-5 md:space-y-0 lg:grid lg:w-2/3 lg:grid-cols-3">
-            <div className="flex w-70 justify-center md:w-auto md:justify-start lg:min-h-full">
+            <div className="flex w-full justify-center md:w-auto md:justify-start lg:min-h-full">
               <MyCard></MyCard>
             </div>
 
