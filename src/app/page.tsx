@@ -116,7 +116,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="shadow-glow-light-soft col-span-2 mt-5 mb-10 rounded-2xl bg-slate-950 py-2 shadow-purple-900 md:mb-0 md:shadow-none md:outline md:outline-offset-4 md:outline-purple-500">
+            <div className="shadow-glow-light-soft col-span-2 mt-5 mb-10 rounded-2xl bg-darkest-violet md:bg-slate-950 py-2 shadow-purple-900 md:mb-0 md:shadow-none md:outline md:outline-offset-4 md:outline-purple-500">
               <div className="h-full overflow-hidden">
                 <h2 className="text-light-violet mb-3 block text-center text-xl md:hidden">
                   Tecnologías

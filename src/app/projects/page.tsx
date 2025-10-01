@@ -24,7 +24,7 @@ export default function Projects() {
         (selected === "Data Analysis" && index === 1);
 
       animate(btn, {
-        backgroundColor: isActive ? "#FF2056" : "#0f172a", // ambar activo / gris inactivo
+        backgroundColor: isActive ? "#FF2056" : "#180224", // rosa activo / gris inactivo
         color: isActive ? "#fff" : "#fff",
         scale: isActive ? 1 : 1, // efecto rebote
         duration: 200,
@@ -67,7 +67,7 @@ export default function Projects() {
         <Nav></Nav>
 
         <div className="flex justify-center">
-          <div className="mt-5 mb-2 rounded-xl border-2 border-black bg-darkest-violet p-2 backdrop-blur-md">
+          <div className="mt-5 mb-2 rounded-xl border-2 border-black bg-darker-violet p-2 backdrop-blur-md">
             <h2 className="text-rose-500 text-xl font-semibold">Mis proyectos destacados</h2>
           </div>
         </div>

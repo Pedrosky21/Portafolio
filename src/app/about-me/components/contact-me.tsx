@@ -6,14 +6,18 @@ export default function ContactMe() {
 
   return (
     <>
-      <div className={`rounded-xl p-4 lg:mb-0 shadow-glow-light shadow-purple-900
-        ${showMail ? "bg-slate-950" : "bg-rose-700"}`}>
-        <button className="w-full cursor-pointer" onClick={() => setShowMail(!showMail)}>
+      <div
+        className={`shadow-glow-light relative rounded-xl p-4 shadow-purple-900 overflow-hidden lg:mb-0 ${showMail ? "bg-slate-950" : "bg-darkest-violet hover:bg-rose-700"}`}
+      >
+        <button
+          className="w-full cursor-pointer"
+          onClick={() => setShowMail(!showMail)}
+        >
           <h2 className="text-lg">Contactame</h2>
         </button>
         <div
-          className={`transition-all duration-500 overflow-hidden ${
-            showMail ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0"
+          className={`overflow-hidden transition-all duration-500 ${
+            showMail ? "mt-4 max-h-40 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="flex space-x-2">
@@ -33,7 +37,7 @@ export default function ContactMe() {
             </svg>
             <p>pedroarreguez21@gmail.com</p>
           </div>
-          <div className="flex space-x-2 mt-2">
+          <div className="mt-2 flex space-x-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
