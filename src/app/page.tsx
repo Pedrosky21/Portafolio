@@ -16,26 +16,25 @@ export default function Home() {
     <>
       <div className="bg-gradient-violet min-h-screen w-full">
         <Nav />
-
         <div className="flex w-full justify-center pt-10">
-          <div className="lg:grid w-5/6 grid-cols-1 space-y-5 lg:grid-cols-3 lg:w-2/3 md:space-y-0">
-            <div className="items-center w-70 md:w-auto lg:min-h-full">
+          <div className="w-5/6 grid-cols-1 space-y-5 md:space-y-0 lg:grid lg:w-2/3 lg:grid-cols-3">
+            <div className="flex w-70 justify-center md:w-auto md:justify-start lg:min-h-full">
               <MyCard></MyCard>
             </div>
 
-            <div className="py-2 lg:py-0 col-span-2">
+            <div className="col-span-2 py-2 lg:py-0">
               <div className="bg-darkest-violet shadow-glow-light-soft flex flex-col rounded-xl shadow-purple-900 md:min-h-full md:w-full">
-                <h2 className="text-rose-500 text-center text-2xl md:text-start py-1 px-2">
+                <h2 className="px-2 py-1 text-center text-2xl text-rose-500 md:text-start">
                   Proyectos destacados
                 </h2>
-                <div className="grid flex-1 grid-rows-2 space-y-2 divide-y-1 rounded-b-xl bg-slate-950 outline-1 outline-light-violet px-4 md:w-full">
+                <div className="outline-light-violet grid flex-1 grid-rows-2 space-y-2 divide-y-1 rounded-b-xl bg-slate-950 px-4 outline-1 md:w-full">
                   {projectsToShow.map((proj, index) => (
                     <div
                       key={index}
                       className="group relative w-full items-center py-2 transition-all hover:translate-x-2 md:flex"
                     >
                       <div className="space-y-1 md:w-full">
-                        <h3 className="text-xl text-light-violet">
+                        <h3 className="text-light-violet text-xl">
                           {proj.title}
                         </h3>
                         <div className="me-5 flex flex-col justify-between md:h-32">
@@ -65,7 +64,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-darkest-violet shadow-glow-light-soft me-0 mt-0 w-full rounded-xl p-2 shadow-purple-900 md:me-10 md:mt-8 md:w-64 md:bg-transparent md:p-0 md:shadow-none">
+            <div className="bg-darkest-violet shadow-glow-light-soft me-0 mt-0 w-full rounded-xl p-2 pb-3 md:pb-0 shadow-purple-900 md:me-10 md:mt-8 md:w-64 md:bg-transparent md:p-0 md:shadow-none">
               <h2 className="text-light-violet mb-3 block text-center text-xl md:hidden">
                 Mis redes
               </h2>
@@ -117,9 +116,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-slate-950 col-span-2 mt-5 mb-10 rounded-2xl py-2 outline outline-offset-4 outline-purple-500 md:mb-0">
+            <div className="shadow-glow-light-soft col-span-2 mt-5 mb-10 rounded-2xl bg-slate-950 py-2 shadow-purple-900 md:mb-0 md:shadow-none md:outline md:outline-offset-4 md:outline-purple-500">
               <div className="h-full overflow-hidden">
-                <h2 className="mb-3 block text-center text-xl text-light-violet md:hidden">
+                <h2 className="text-light-violet mb-3 block text-center text-xl md:hidden">
                   Tecnologías
                 </h2>
                 <LogosMarquee></LogosMarquee>

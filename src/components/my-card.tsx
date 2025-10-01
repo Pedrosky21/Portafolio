@@ -1,6 +1,6 @@
 import { animate } from "animejs";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function MyCard() {
   const outlineRef = useRef<HTMLAnchorElement>(null);
@@ -42,6 +42,54 @@ export default function MyCard() {
       duration: 500,
     });
   };
+
+  // Animacion en móviles
+  // Guardamos las variables en refs para que persistan entre renders
+  const currentX = useRef(0);
+  const currentY = useRef(0);
+  const targetX = useRef(0);
+  const targetY = useRef(0);
+  const requestIdRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const updateTransform = () => {
+      // Lerp para suavizar movimiento
+      currentX.current += (targetX.current - currentX.current) * 0.1;
+      currentY.current += (targetY.current - currentY.current) * 0.1;
+
+      if (cardRef.current) {
+        cardRef.current.style.transform = `rotateX(${currentY.current}deg) rotateY(${currentX.current}deg)`;
+      }
+
+      requestIdRef.current = requestAnimationFrame(updateTransform);
+    };
+
+    updateTransform(); // inicia animación
+
+    return () => {
+      if (requestIdRef.current) cancelAnimationFrame(requestIdRef.current);
+    };
+  }, []);
+
+  const handleMove = (x: number, y: number) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    targetY.current = ((y - centerY) / rect.height) * 20;
+    targetX.current = ((x - centerX) / rect.width) * -40;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length > 0) {
+      const touch = e.touches[0];
+      handleMove(touch.clientX, touch.clientY);
+    }
+  };
+  const handleTouchEnd = () => { targetX.current = 0; targetY.current = 0; };
+
 
   // Para animacion del boton de descargar
   const [isAnimating, setIsAnimating] = useState(false);
@@ -166,13 +214,15 @@ export default function MyCard() {
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           className="bg-darkest-violet shadow-glow-light-soft hover:shadow-violet-big flex justify-center rounded-xl py-3 shadow-purple-900 outline-1 outline-black md:w-64 md:p-1"
         >
           <div className="">
             <div>
               <Image
                 src={"/yo7.png"}
-                alt="Descripción de la imagen"
+                alt="imagen mia"
                 width={250}
                 height={250}
                 className="rounded-t-xl object-contain"
@@ -180,7 +230,7 @@ export default function MyCard() {
             </div>
 
             <div className="">
-              <h2 className="p-1 text-xl text-rose-500">Pedro Arreguez</h2>
+              <h2 className="p-1 text-xl text-rose-500 font-semibold">Pedro Arreguez</h2>
               <div className="space-y-2 text-sm">
                 <div className="flex">
                   <svg
@@ -201,7 +251,7 @@ export default function MyCard() {
                   <p> Estudiante de Ing. en Sistemas</p>
                 </div>
 
-                <div className="flex items-center space-x-1">
+                <div className="flex">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -217,7 +267,7 @@ export default function MyCard() {
                     />
                   </svg>
 
-                  <p className="p-0">Córdoba, Argentina</p>
+                  <p className="">Córdoba, Argentina</p>
                 </div>
 
                 <div className="flex">
