@@ -160,7 +160,7 @@ export default function MyTechnologies() {
                       : "text-rose-500"
                   } ${console.log(showedTechnology.title)}`}
                 >
-                  {technologyIcons[tech]}
+                  {technologyIcons[tech].svg}
                 </div>
               </button>
             ))}
