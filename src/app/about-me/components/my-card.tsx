@@ -50,7 +50,7 @@ export default function MyCard() {
           <p>
             Ahora que estoy por entrar en vacaciones de la facultad
             y tengo más tiempo libre, estoy haciendo un proyecto de
-            una aplicacion full stack y aprendiendo AWS.
+            aplicacion full stack y aprendiendo AWS.
           </p>
         </div>
       </div>
