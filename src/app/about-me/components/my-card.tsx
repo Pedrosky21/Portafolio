@@ -5,25 +5,25 @@ export default function MyCard() {
     <>
       <div className="bg-darkest-violet shadow-glow-light overflow-hidden rounded-xl p-1 shadow-purple-900">
         <div className="md:flex">
-          <div className="flex md:block items-center">
+          <div className="flex items-center md:block">
             <Image
               src="/yo5.jpeg"
               alt="Imagen mia"
               width={200}
               height={100}
-              className="rounded-xl w-2/3 md:w-full h-auto"
+              className="h-auto w-2/3 rounded-xl md:w-full"
             ></Image>
-            <p className="text-2xl md:hidden ms-2">
+            <p className="ms-2 text-2xl md:hidden">
               Hola! Soy{" "}
               <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-purple-900">
                 <span className="relative text-white">Pedro</span>
               </span>
             </p>
           </div>
-          <div className="ps-1 md:mx-2 mt-2">
+          <div className="mt-2 ps-1 md:mx-2">
             <p className="hidden text-2xl md:block">
               Hola! Soy{" "}
-              <span className="ml-1 relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-rose-500">
+              <span className="relative ml-1 inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-rose-500">
                 <span className="relative text-white">Pedro</span>
               </span>
             </p>
@@ -46,6 +46,11 @@ export default function MyCard() {
             Siempre exploro diferentes hobbies o tecnologias nuevas y suelo
             aprender muchas cosas diferentes, sin dejar de lado enfocarme lo que
             más me gusta.
+          </p>
+          <p>
+            Ahora que estoy por entrar en vacaciones de la facultad
+            y tengo más tiempo libre, estoy haciendo un proyecto de
+            una aplicacion full stack y aprendiendo AWS.
           </p>
         </div>
       </div>
